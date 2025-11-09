@@ -7,9 +7,10 @@ import { Clock, MapPin, ShoppingCart } from "lucide-react";
 import { Card, CardTitle } from "./ui/card";
 import { useMemo, useState } from "react";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "./ui/select";
+import { useCart } from "@/contexts/CartContext";
 
 interface Product {
-  codProduto: string | number;
+  codProduto: number;
   imagem: string;
   nome: string;
   descricao: string;
@@ -27,6 +28,8 @@ export function ProductCatalog() {
     const [selectedRestaurant, setSelectedRestaurant] = useState<string>("all");
     const [selectedCategory, setSelectedCategory] = useState<string>("all");
     const [sortByPrice, setSortByPrice] = useState<string>("default");
+
+    const { addToCart } = useCart()
 
     const restaurants = useMemo(
         () => [
@@ -134,16 +137,19 @@ export function ProductCatalog() {
         {filteredAndSortedProducts.map((prod) => (
           <Card
             key={prod.codProduto}
-            className="w-72 h-96 gap-5 p-4 flex items-center" 
+            className="relative w-72 h-96 gap-5 p-4 flex items-center" 
           >
+            <div className="absolute top-4 left-4 bg-red-500 rounded-full text-sm text-white items-start justify-start p-1 font-semibold">
+              <span>{prod.categoria.nome}</span>
+            </div>
             <Image
               src={prod.imagem}
               width={150}
               height={150}
               alt={prod.nome}
-              className="w-36 h-36 object-cover rounded-lg"
+              className="w-36 h-36 object-cover rounded-lg items-center"
             />
-            <div className="flex-1 space-y-1">
+            <div className="flex-1 space-y-1 items-center">
               <CardTitle className="text-2xl font-bold text-red-500 text-center">
                 {prod.nome}
               </CardTitle>
@@ -169,7 +175,7 @@ export function ProductCatalog() {
                 </div>
               </div>
 
-              <Button className="flex w-full text-white p-2 bg-red-500 hover:bg-red-600">
+              <Button onClick={() => addToCart(prod)} className="flex w-full text-white p-2 bg-red-500 hover:bg-red-600">
                 <ShoppingCart className="mr-2" />
                 Adicionar ao carrinho
               </Button>
