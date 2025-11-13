@@ -9,7 +9,12 @@ class CarrinhoController {
   async buscarItens(req: NextRequest) {
     try {
       const carrinho = getCarrinhoByClienteId(codClienteFixo); 
-      return NextResponse.json(carrinho);
+      return NextResponse.json({
+        codCarrinho: carrinho.codCarrinho,
+        itens: carrinho.itens,
+        total: carrinho.calcularTotal(),
+        totalItens: carrinho.totalItens(),
+      });
     } catch (error) {
       console.error("Erro em buscarCarrinho:", error);
       return NextResponse.json({ message: "Erro ao buscar carrinho" }, { status: 500 });
@@ -46,7 +51,12 @@ class CarrinhoController {
         carrinho.itens.push(novoItem);
       }
 
-      return NextResponse.json(carrinho);
+      return NextResponse.json({
+        codCarrinho: carrinho.codCarrinho,
+        itens: carrinho.itens,
+        total: carrinho.calcularTotal(),
+        totalItens: carrinho.totalItens(),
+      });
     } catch (error) {
       console.error("Erro em adicionarItem:", error);
       return NextResponse.json({ message: "Erro ao adicionar item" }, { status: 500 });

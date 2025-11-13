@@ -16,6 +16,10 @@ class ItemCarrinho {
         this.quantidade = quantidade;
         this.precoUnitario = produto.preco;
     }
+
+    calcularSubtotal(): number {
+        return this.produto.preco * this.quantidade;
+    }
 }
 
 export default ItemCarrinho;

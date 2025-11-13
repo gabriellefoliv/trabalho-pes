@@ -26,6 +26,8 @@ interface CartItem {
 interface CartAPIResponse {
   codCarrinho: number;
   itens: CartItem[];
+  total: number;
+  totalItens: number;
 }
 
 interface CartContextType {
@@ -42,6 +44,8 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartTotal, setCartTotal] = useState(0);
+  const [totalItems, setTotalItems] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -53,9 +57,13 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         
         const data: CartAPIResponse = await response.json();
         setCartItems(data.itens || []);
+        setCartTotal(data.total || 0);
+        setTotalItems(data.totalItens || 0);
       } catch (error) {
         console.error("Erro ao carregar carrinho:", error);
-        setCartItems([]); 
+        setCartItems([]);
+        setCartTotal(0);
+        setTotalItems(0); 
       } finally {
         setIsLoading(false);
       }
@@ -77,6 +85,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
       const data: CartAPIResponse = await response.json();
       setCartItems(data.itens); 
+      setCartTotal(data.total || 0);
+      setTotalItems(data.totalItens || 0);
     } catch (error) {
       console.error("Erro ao adicionar ao carrinho:", error);
     }
@@ -98,6 +108,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
       const data: CartAPIResponse = await response.json();
       setCartItems(data.itens);
+      setCartTotal(data.total || 0);
+      setTotalItems(data.totalItens || 0);
     } catch (error) {
       console.error("Erro ao atualizar quantidade:", error);
     }
@@ -114,13 +126,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       
       const data: CartAPIResponse = await response.json();
       setCartItems(data.itens);
+      setCartTotal(data.total || 0);
+      setTotalItems(data.totalItens || 0);
     } catch (error) {
       console.error("Erro ao remover item:", error);
     }
   };
-
-  const totalItems = cartItems.reduce((acc, item) => acc + item.quantidade, 0);
-  const cartTotal = cartItems.reduce((acc, item) => acc + (item.precoUnitario * item.quantidade), 0);
 
   return (
     <CartContext.Provider 
