@@ -1,7 +1,7 @@
 'use client'
 
 import Image from "next/image";
-import loadedProducts from "@/services/loaded/products";
+import loadedProdutos from "@/services/loaded/produtos";
 import { Button } from "./ui/button";
 import { Clock, MapPin, ShoppingCart } from "lucide-react";
 import { Card, CardTitle } from "./ui/card";
@@ -33,18 +33,18 @@ export function ProductCatalog() {
 
     const restaurants = useMemo(
         () => [
-        ...new Set(loadedProducts.map((prod) => prod.restaurante.nome)),
+        ...new Set(loadedProdutos.map((prod) => prod.restaurante.nome)),
         ],
         []
     );
 
     const categories = useMemo(
-        () => [...new Set(loadedProducts.map((prod: Product) => prod.categoria.nome))],
+        () => [...new Set(loadedProdutos.map((prod: Product) => prod.categoria.nome))],
         []
     );
 
     const filteredAndSortedProducts = useMemo(() => {
-        let products: Product[] = [...loadedProducts];
+        let products: Product[] = [...loadedProdutos];
 
         if (selectedRestaurant !== "all") {
         products = products.filter(

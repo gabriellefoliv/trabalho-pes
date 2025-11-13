@@ -19,10 +19,10 @@ const data = [
   },
 ];
 
-const loadedCategories: Categoria[] = [];
+const loadedCategorias: Categoria[] = [];
 
 data.map(({ codCategoria, nome }) => {
-  loadedCategories.push(new Categoria(codCategoria, nome));
+  loadedCategorias.push(new Categoria(codCategoria, nome));
 });
 
-export default loadedCategories;
+export default loadedCategorias;

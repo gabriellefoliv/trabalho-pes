@@ -1,6 +1,6 @@
 import Produto from '@/app/api/models/produto';
-import loadedCategories from './categories';
-import loadedRestaurants from './restaurants';
+import loadedCategorias from './categorias';
+import loadedRestaurantes from './restaurantes';
 
 const data = [
   {
@@ -10,8 +10,8 @@ const data = [
     descricao: 'Pizza sabor calabresa com borda recheada de catupiry.',
     preco: 45.0,
     quantidade: 50,
-    categoria: loadedCategories[0],
-    restaurante: loadedRestaurants[0],
+    categoria: loadedCategorias[2],
+    restaurante: loadedRestaurantes[0],
     tempoPreparo: 30,
   },
   {
@@ -21,8 +21,8 @@ const data = [
     descricao: 'Lasanha de carne com molho bechamel.',
     preco: 30.0,
     quantidade: 50,
-    categoria: loadedCategories[0],
-    restaurante: loadedRestaurants[0],
+    categoria: loadedCategorias[1],
+    restaurante: loadedRestaurantes[0],
     tempoPreparo: 40,
   },
   {
@@ -32,8 +32,8 @@ const data = [
     descricao: 'Sushi variado com peixe fresco e arroz temperado.',
     preco: 20.0,
     quantidade: 50,
-    categoria: loadedCategories[0],
-    restaurante: loadedRestaurants[1],
+    categoria: loadedCategorias[3],
+    restaurante: loadedRestaurantes[1],
     tempoPreparo: 20,
   },
   {
@@ -43,8 +43,8 @@ const data = [
     descricao: 'Batata frita crocante e saborosa.',
     preco: 15.0,
     quantidade: 50,
-    categoria: loadedCategories[0],
-    restaurante: loadedRestaurants[0],
+    categoria: loadedCategorias[0],
+    restaurante: loadedRestaurantes[0],
     tempoPreparo: 10,
   },
   {
@@ -54,8 +54,8 @@ const data = [
     descricao: 'Hamburguer suculento com queijo e bacon.',
     preco: 25.0,
     quantidade: 50,
-    categoria: loadedCategories[0],
-    restaurante: loadedRestaurants[0],
+    categoria: loadedCategorias[0],
+    restaurante: loadedRestaurantes[0],
     tempoPreparo: 15,
   },
   {
@@ -65,8 +65,8 @@ const data = [
     descricao: 'Salgadinhos variados e saborosos.',
     preco: 24.0,
     quantidade: 50,
-    categoria: loadedCategories[0],
-    restaurante: loadedRestaurants[0],
+    categoria: loadedCategorias[0],
+    restaurante: loadedRestaurantes[0],
     tempoPreparo: 10,
   },
   {
@@ -76,8 +76,8 @@ const data = [
     descricao: 'Pastel frito com recheio de carne.',
     preco: 20.0,
     quantidade: 50,
-    categoria: loadedCategories[0],
-    restaurante: loadedRestaurants[0],
+    categoria: loadedCategorias[0],
+    restaurante: loadedRestaurantes[0],
     tempoPreparo: 15,
   },
   {
@@ -87,8 +87,8 @@ const data = [
     descricao: 'Sushi, camarão empanado e hot roll.',
     preco: 45.0,
     quantidade: 50,
-    categoria: loadedCategories[0],
-    restaurante: loadedRestaurants[0],
+    categoria: loadedCategorias[3],
+    restaurante: loadedRestaurantes[0],
     tempoPreparo: 30,
   },
   {
@@ -98,8 +98,8 @@ const data = [
     descricao: 'Pizza sabor marguerita com molho de tomate e queijo.',
     preco: 45.0,
     quantidade: 50,
-    categoria: loadedCategories[0],
-    restaurante: loadedRestaurants[0],
+    categoria: loadedCategorias[2],
+    restaurante: loadedRestaurantes[0],
     tempoPreparo: 30,
   },
   {
@@ -109,8 +109,8 @@ const data = [
     descricao: 'Prato de peixe grelhado com legumes.',
     preco: 45.0,
     quantidade: 50,
-    categoria: loadedCategories[0],
-    restaurante: loadedRestaurants[0],
+    categoria: loadedCategorias[1],
+    restaurante: loadedRestaurantes[0],
     tempoPreparo: 30,
   },
   {
@@ -120,8 +120,8 @@ const data = [
     descricao: 'Prato com arroz, feijão, bife e salada.',
     preco: 45.0,
     quantidade: 50,
-    categoria: loadedCategories[0],
-    restaurante: loadedRestaurants[0],
+    categoria: loadedCategorias[1],
+    restaurante: loadedRestaurantes[0],
     tempoPreparo: 30,
   },
   {
@@ -131,18 +131,18 @@ const data = [
     descricao: 'Combo com hamburguer e batata frita.',
     preco: 45.0,
     quantidade: 50,
-    categoria: loadedCategories[0],
-    restaurante: loadedRestaurants[0],
+    categoria: loadedCategorias[0],
+    restaurante: loadedRestaurantes[0],
     tempoPreparo: 30,
   },
   
 ];
 
-const loadedProducts: Produto[] = [];
+const loadedProdutos: Produto[] = [];
 
 data.map(
   ({ codProduto, nome, imagem, descricao, preco, quantidade, categoria, restaurante, tempoPreparo }) => {
-    loadedProducts.push(
+    loadedProdutos.push(
       new Produto(
         codProduto,
         nome,
@@ -158,4 +158,4 @@ data.map(
   }
 );
 
-export default loadedProducts;
+export default loadedProdutos;

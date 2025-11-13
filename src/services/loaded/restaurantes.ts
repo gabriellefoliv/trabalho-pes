@@ -15,10 +15,10 @@ const data = [
   },
 ];
 
-const loadedRestaurants: Restaurante[] = [];
+const loadedRestaurantes: Restaurante[] = [];
 
 data.map(({ codRestaurante, nome, cnpj, endereco }) => {
-  loadedRestaurants.push(new Restaurante(codRestaurante, nome, cnpj, endereco));
+  loadedRestaurantes.push(new Restaurante(codRestaurante, nome, cnpj, endereco));
 });
 
-export default loadedRestaurants;
+export default loadedRestaurantes;

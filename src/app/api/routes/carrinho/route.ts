@@ -2,7 +2,7 @@ import { NextRequest } from "next/server";
 import carrinhoController from "@/app/api/controllers/carrinhoController";
 
 export async function GET(req: NextRequest) {
-  return carrinhoController.buscar(req);
+  return carrinhoController.buscarItens(req);
 }
 
 export async function POST(req: NextRequest) {

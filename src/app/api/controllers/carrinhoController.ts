@@ -1,12 +1,12 @@
 import { NextResponse, NextRequest } from "next/server";
 import { codClienteFixo } from "@/services/loaded/clientes";
 import { getCarrinhoByClienteId } from "@/services/loaded/carrinhos";
-import loadedProducts from "@/services/loaded/products";
+import loadedProdutos from "@/services/loaded/produtos";
 import ItemCarrinho from "@/app/api/models/itemCarrinho";
 
 class CarrinhoController {
 
-  async buscar(req: NextRequest) {
+  async buscarItens(req: NextRequest) {
     try {
       const carrinho = getCarrinhoByClienteId(codClienteFixo); 
       return NextResponse.json(carrinho);
@@ -30,7 +30,7 @@ class CarrinhoController {
       }
 
       const carrinho = getCarrinhoByClienteId(codClienteFixo);
-      const produto = loadedProducts.find(p => p.codProduto === codProduto);
+      const produto = loadedProdutos.find(p => p.codProduto === codProduto);
       
       if (!produto) {
         return NextResponse.json({ message: "Produto não encontrado" }, { status: 404 });
