@@ -83,7 +83,12 @@ class CarrinhoController {
         return NextResponse.json({ message: "Item não encontrado" }, { status: 404 });
       }
 
-      return NextResponse.json(carrinho);
+      return NextResponse.json({
+        codCarrinho: carrinho.codCarrinho,
+        itens: carrinho.itens,
+        total: carrinho.calcularTotal(),
+        totalItens: carrinho.totalItens(),
+      });
     } catch (error) {
       console.error("Erro em atualizarItem:", error);
       return NextResponse.json({ message: "Erro ao atualizar item" }, { status: 500 });
@@ -108,7 +113,12 @@ class CarrinhoController {
         return NextResponse.json({ message: "Item não encontrado no carrinho" }, { status: 404 });
       }
 
-      return NextResponse.json(carrinho);
+      return NextResponse.json({
+        codCarrinho: carrinho.codCarrinho,
+        itens: carrinho.itens,
+        total: carrinho.calcularTotal(),
+        totalItens: carrinho.totalItens(),
+      });
     } catch (error) {
       console.error("Erro em removerItem:", error);
       return NextResponse.json({ message: "Erro ao remover item" }, { status: 500 });

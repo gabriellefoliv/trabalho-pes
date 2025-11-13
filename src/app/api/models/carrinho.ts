@@ -1,4 +1,3 @@
-import { Item } from "@radix-ui/react-select";
 import type Cliente from "./cliente";
 import type ItemCarrinho from "./itemCarrinho";
 
